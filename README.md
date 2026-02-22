@@ -34,7 +34,7 @@ jobs:
           exit 1
 
       - name: Check version setup
-        uses: johanna-herrmann/node-check-version@v1
+        uses: johanna-herrmann/node-check-version@v2
         with:
           next_version: ${{ steps.get_next_version.outputs.version }}
 ```

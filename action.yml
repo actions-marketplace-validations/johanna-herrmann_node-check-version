@@ -21,5 +21,5 @@ runs:
     - name: Run check_next_version.sh
       shell: bash
       run: |
-        chmod +x ./check_next_version.sh
-        ./check_next_version.sh "${{ inputs.next_version }}"
+        chmod +x "${{ github.action_path }}/check_next_version.sh"
+        "${{ github.action_path }}/check_next_version.sh" "${{ inputs.next_version }}"
