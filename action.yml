@@ -1,0 +1,25 @@
+name: "Check Next Release Version"
+description: "Checks that NEXT_VERSION and current date matches package.json and changelog.md"
+author: "Johanna Herrmann"
+
+inputs:
+  next_version:
+    description: "The next version (with v prefix)"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install jq
+      shell: bash
+      run: |
+        sudo apt-get update && sudo apt-get install -y jq
+
+    - name: Run check_next_version.sh
+      shell: bash
+      run: |
+        chmod +x ./check_next_version.sh
+        ./check_next_version.sh "${{ inputs.next_version }}"
